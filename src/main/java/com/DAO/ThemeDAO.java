@@ -1,4 +1,4 @@
-package com.service;
+package com.DAO;
 
 import com.Model.Theme;
 import org.springframework.stereotype.Repository;
@@ -12,9 +12,9 @@ import javax.transaction.Transactional;
 public class ThemeDAO {
 
     @PersistenceContext
-    private EntityManager entityManager;
+    private  EntityManager entityManager;
 
-    public int insert(Theme theme) {
+    public  int insert(Theme theme) {
         entityManager.persist(theme);
         return theme.getThCode();
     }

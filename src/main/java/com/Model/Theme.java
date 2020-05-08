@@ -38,4 +38,11 @@ public class Theme {
         this.thNom = thNom;
     }
 
+    @Override
+    public String toString() {
+        return "Theme{" +
+                "thCode=" + thCode +
+                ", thNom='" + thNom + '\'' +
+                '}';
+    }
 }

@@ -14,6 +14,9 @@ public class Examen {
     private int exTime;
     private int exScore;
 
+    public Examen() {
+    }
+
     public Examen(String exNom, int exTime, int exScore, Theme exThCode) {
         this.exNom = exNom;
         this.exTime = exTime;

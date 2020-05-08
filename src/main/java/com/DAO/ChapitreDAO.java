@@ -1,4 +1,4 @@
-package com.service;
+package com.DAO;
 
 import com.Model.Chapitre;
 import org.springframework.stereotype.Repository;

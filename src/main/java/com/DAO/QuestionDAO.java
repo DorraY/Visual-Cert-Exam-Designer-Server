@@ -1,4 +1,4 @@
-package com.service;
+package com.DAO;
 import com.Model.Question;
 import org.springframework.stereotype.Repository;
 

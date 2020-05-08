@@ -1,21 +1,23 @@
-package com.service;
+package com.DAO;
 
-import com.Model.Choix;
+import com.Model.Examen;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-@Transactional
 @Repository
-public class ChoixDAO {
+@Transactional
+
+public class ExamenDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    public int insert(Choix choix) {
-        entityManager.persist(choix);
-        return choix.getChoixCode();
+    public int insert(Examen examen) {
+        entityManager.persist(examen);
+        return examen.getExId();
     }
 }
