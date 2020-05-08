@@ -1,6 +1,5 @@
 package com.Model;
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "Theme")
@@ -8,7 +7,7 @@ public class Theme {
 
     @Id
     @GeneratedValue
-    private int thCode;
+    private Integer thCode;
 
     private String thNom;
 
@@ -23,11 +22,11 @@ public class Theme {
     public Theme() {
     }
 
-    public int getThCode() {
+    public Integer getThCode() {
         return thCode;
     }
 
-    public void setThCode(int thCode) {
+    public void setThCode(Integer thCode) {
         this.thCode = thCode;
     }
 

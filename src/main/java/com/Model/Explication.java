@@ -7,7 +7,7 @@ public class Explication {
 
     @Id
     @GeneratedValue
-    private int exCode;
+    private Integer exCode;
 
     @OneToOne
     @JoinColumn(name = "ex_qucode" )
@@ -17,11 +17,11 @@ public class Explication {
     public Explication() {
     }
 
-    public int getExCode() {
+    public Integer getExCode() {
         return exCode;
     }
 
-    public void setExCode(int exCode) {
+    public void setExCode(Integer exCode) {
         this.exCode = exCode;
     }
 

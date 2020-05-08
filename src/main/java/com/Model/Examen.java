@@ -1,7 +1,6 @@
 package com.Model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "Examen")
@@ -9,7 +8,7 @@ public class Examen {
 
     @Id
     @GeneratedValue
-    private int exId;
+    private Integer exId;
 
     private String exNom;
     private int exTime;
@@ -29,11 +28,11 @@ public class Examen {
     /*@OneToMany(mappedBy = "quCode")
     private Set<Question> questions;*/
 
-    public int getExId() {
+    public Integer getExId() {
         return exId;
     }
 
-    public void setExId(int exId) {
+    public void setExId(Integer exId) {
         this.exId = exId;
     }
 

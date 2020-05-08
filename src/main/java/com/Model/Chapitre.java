@@ -1,7 +1,6 @@
 package com.Model;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "Chapitre")
@@ -9,7 +8,7 @@ public class Chapitre {
 
     @Id
     @GeneratedValue
-    private int chCode;
+    private Integer chCode;
 
     private String chNom;
 
@@ -19,11 +18,11 @@ public class Chapitre {
     public Chapitre() {
     }
 
-    public int getChCode() {
+    public Integer getChCode() {
         return chCode;
     }
 
-    public void setChCode(int chCode) {
+    public void setChCode(Integer chCode) {
         this.chCode = chCode;
     }
 

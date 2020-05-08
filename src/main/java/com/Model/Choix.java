@@ -7,7 +7,7 @@ public class Choix {
 
     @Id
     @GeneratedValue
-    private int choixCode;
+    private Integer choixCode;
 
     private String chText;
     private int chCorrect;
@@ -16,11 +16,11 @@ public class Choix {
     @JoinColumn(name = "ch_qucode")
     private Question chQuCode;
 
-    public int getChoixCode() {
+    public Integer getChoixCode() {
         return choixCode;
     }
 
-    public void setChoixCode(int choixCode) {
+    public void setChoixCode(Integer choixCode) {
         this.choixCode = choixCode;
     }
 
