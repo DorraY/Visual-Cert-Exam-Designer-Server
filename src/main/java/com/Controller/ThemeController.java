@@ -3,6 +3,7 @@ package com.Controller;
 import com.Exception.ResourceNotFoundException;
 import com.Model.Theme;
 import com.Repositories.ThemeRepository;
+import org.hibernate.annotations.GenerationTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -33,7 +34,7 @@ public class ThemeController {
 
     @PostMapping("/themes")
     @RequestMapping(method = RequestMethod.POST )
-    public Theme createTheme(@Valid @RequestBody Theme theme) {
+    public Theme createTheme(@RequestBody Theme theme) {
         return themeRepository.save(theme);
     }
 
@@ -49,7 +50,7 @@ public class ThemeController {
     }
 
     @DeleteMapping("/themes/{id}")
-    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id")
+    public Map<String, Boolean> deleteTheme(@PathVariable(value = "id")
                                                            Integer thCode) throws ResourceNotFoundException {
         Theme theme = themeRepository.findById(thCode).orElseThrow(
                 () -> new ResourceNotFoundException("No theme for this id" + thCode));

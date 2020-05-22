@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:9090")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1")
 public class ExamenController {
@@ -21,6 +21,7 @@ public class ExamenController {
     private ExamenRepository examenRepository;
 
     @GetMapping("/exams")
+
     public List<Examen> getAllExams() {
         return examenRepository.findAll();
     }
@@ -32,7 +33,7 @@ public class ExamenController {
         return ResponseEntity.ok().body(examen);
     }
 
-    @PostMapping("/exams/")
+    @PostMapping("/exams")
     public Examen createExam(@Valid @RequestBody Examen examen) {
         return examenRepository.save(examen);
     }
