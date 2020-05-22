@@ -1,6 +1,7 @@
 package com.Model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Examen")
@@ -28,7 +29,7 @@ public class Examen {
     @JoinColumn(name = "ex_thcode")
     private Theme exThCode;
 
-    /*@OneToMany(mappedBy = "quCode")
+/*    @OneToMany(mappedBy = "quCode")
     private Set<Question> questions;*/
 
     public Integer getExId() {

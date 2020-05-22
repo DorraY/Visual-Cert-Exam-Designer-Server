@@ -7,10 +7,18 @@ public class Choix {
 
     @Id
     @GeneratedValue
+    @Column(name = "ch_code")
     private Integer choixCode;
 
+    @Column(name = "ch_texte")
     private String chText;
-    private int chCorrect;
+
+    @Column(name = "ch_correct")
+    private Integer chCorrect;
+
+    @Column(name = "ch_ordre")
+    private Integer choixOrdre;
+
 
     @ManyToOne
     @JoinColumn(name = "ch_qucode")
@@ -32,11 +40,19 @@ public class Choix {
         this.chText = chText;
     }
 
-    public int getChCorrect() {
+    public Integer getChCorrect() {
         return chCorrect;
     }
 
-    public void setChCorrect(int chCorrect) {
+    public void setChCorrect(Integer chCorrect) {
         this.chCorrect = chCorrect;
+    }
+
+    public Integer getChoixOrdre() {
+        return choixOrdre;
+    }
+
+    public void setChoixOrdre(Integer choixOrdre) {
+        this.choixOrdre = choixOrdre;
     }
 }

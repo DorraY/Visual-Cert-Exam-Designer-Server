@@ -1,5 +1,6 @@
 package com.Model;
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "Theme")
@@ -13,7 +14,7 @@ public class Theme {
 
 /*    @OneToMany(mappedBy = "exId",fetch = FetchType.LAZY,
             cascade = CascadeType.ALL)
-    private Set<Examen> examens; // fel chakk*/
+    private Set<Examen> examens;*/
 
     public Theme(String thNom) {
         this.thNom = thNom;

@@ -7,11 +7,14 @@ public class Explication {
 
     @Id
     @GeneratedValue
+    @Column(name = "ex_code")
     private Integer exCode;
 
     @OneToOne
     @JoinColumn(name = "ex_qucode" )
     private Question exQucode;
+
+    @Column(name = "ex_texte")
     private String exTextExplanation;
 
     public Explication() {

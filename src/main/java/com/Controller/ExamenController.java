@@ -59,7 +59,5 @@ public class ExamenController {
         Map<String,Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);
         return response;
-
-
     }
 }

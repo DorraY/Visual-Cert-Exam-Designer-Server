@@ -20,7 +20,7 @@ public class ThemeController {
     @Autowired
     private ThemeRepository themeRepository;
 
-    @GetMapping("/")
+    @GetMapping("/themes")
     public List<Theme> getAllThemes() {
         return themeRepository.findAll();
     }
@@ -31,8 +31,9 @@ public class ThemeController {
         return ResponseEntity.ok().body(theme);
     }
 
-    @PostMapping("/themes/")
-    public Theme createExam(@Valid @RequestBody Theme theme) {
+    @PostMapping("/themes")
+    @RequestMapping(method = RequestMethod.POST )
+    public Theme createTheme(@Valid @RequestBody Theme theme) {
         return themeRepository.save(theme);
     }
 
@@ -41,7 +42,6 @@ public class ThemeController {
     @Valid @RequestBody Theme themeDetails) throws ResourceNotFoundException {
         Theme theme = themeRepository.findById(thCode).orElseThrow(
                 () -> new ResourceNotFoundException("No theme for this id" + thCode));
-
 
         theme.setThNom(themeDetails.getThNom());
         final Theme updatedTheme = themeRepository.save(theme);
