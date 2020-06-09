@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:9090")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1")
 public class ThemeController {
@@ -27,15 +27,18 @@ public class ThemeController {
     }
 
     @GetMapping("/themes/{id}")
-    public ResponseEntity<Theme> getThemeById(@PathVariable(value = "id" ) Integer thCode) throws ResourceNotFoundException {
+    public ResponseEntity<Theme> getThemeById(@PathVariable(value = "id" ) Integer thCode) throws ResourceNotFoundException
+    {
         Theme theme = themeRepository.findById(thCode).orElseThrow(() -> new ResourceNotFoundException("No theme with this id!" + thCode));
         return ResponseEntity.ok().body(theme);
     }
 
     @PostMapping("/themes")
-    @RequestMapping(method = RequestMethod.POST )
     public Theme createTheme(@RequestBody Theme theme) {
-        return themeRepository.save(theme);
+        if (!themeRepository.existsByThNom(theme.getThNom())) {
+            return themeRepository.save(theme);
+        }
+        return  null;
     }
 
     @PutMapping("/themes/{id}")

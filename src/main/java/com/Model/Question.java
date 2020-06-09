@@ -1,25 +1,34 @@
 package com.Model;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Question")
 public class Question {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @TableGenerator(name="sqlite", table="sqlite_sequence",
+            pkColumnName="name", valueColumnName="seq",
+            pkColumnValue="sqliteTestTable")
     @Column(name = "qu_code")
     private Integer quCode;
 
+    @NotNull
     @Column(name = "qu_ordre")
-    private Integer ordre;
+    private Integer quOrdre;
 
+    @NotNull
     @Column(name = "qu_text")
     private String quText;
 
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "qu_chcode")
-    private Chapitre chCode;
+    private Chapitre quChCode;
 
+
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "qu_exccode")
     private Examen exCode;
@@ -36,20 +45,20 @@ public class Question {
         this.quCode = quCode;
     }
 
-    public Integer getOrdre() {
-        return ordre;
+    public Integer getQuOrdre() {
+        return quOrdre;
     }
 
-    public void setOrdre(Integer ordre) {
-        this.ordre = ordre;
+    public void setQuOrdre(Integer quOrdre) {
+        this.quOrdre = quOrdre;
     }
 
-    public Chapitre getChCode() {
-        return chCode;
+    public Chapitre getQuChCode() {
+        return quChCode;
     }
 
-    public void setChCode(Chapitre chCode) {
-        this.chCode = chCode;
+    public void setQuChCode(Chapitre quChCode) {
+        this.quChCode = quChCode;
     }
 
     public Examen getExCode() {

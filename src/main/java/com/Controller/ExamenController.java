@@ -1,8 +1,10 @@
 package com.Controller;
 
+import com.Model.Question;
 import com.Repositories.ExamenRepository;
 import com.Exception.ResourceNotFoundException;
 import com.Model.Examen;
+import com.Repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,9 @@ public class ExamenController {
 
     @Autowired
     private ExamenRepository examenRepository;
+
+    @Autowired
+    private QuestionController questionController;
 
     @GetMapping("/exams")
 
@@ -56,6 +61,12 @@ public class ExamenController {
     public Map<String, Boolean> deleteExam(@PathVariable(value = "id") Integer exId) throws ResourceNotFoundException {
         Examen examen = examenRepository.findById(exId).orElseThrow(
                 () -> new ResourceNotFoundException("No exam for this id" + exId));
+        List <Question> allQuestions = questionController.getAllQuestions();
+        for (Question question: allQuestions) {
+            if (question.getExCode().getExId().equals(exId)) {
+                questionController.deleteQuestion(question.getQuCode());
+            }
+        }
         examenRepository.delete(examen);
         Map<String,Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);

@@ -1,5 +1,6 @@
 package com.Model;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -7,9 +8,13 @@ import java.util.Set;
 public class Theme {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @TableGenerator(name="sqlite", table="sqlite_sequence",
+            pkColumnName="name", valueColumnName="seq",
+            pkColumnValue="sqliteTestTable")
     private Integer thCode;
 
+    @NotNull
     private String thNom;
 
 /*    @OneToMany(mappedBy = "exId",fetch = FetchType.LAZY,

@@ -1,6 +1,7 @@
 package com.Model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -8,14 +9,15 @@ import java.util.Set;
 public class Chapitre {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @TableGenerator(name="sqlite", table="sqlite_sequence",
+            pkColumnName="name", valueColumnName="seq",
+            pkColumnValue="sqliteTestTable")
     private Integer chCode;
 
     private String chNom;
 
-/*    @OneToMany(mappedBy = "quCode",fetch = FetchType.LAZY)
-    private Set<Question> questions;*/
-
+    @NotNull
     public Chapitre() {
     }
 
@@ -33,5 +35,13 @@ public class Chapitre {
 
     public void setChNom(String chNom) {
         this.chNom = chNom;
+    }
+
+    @Override
+    public String toString() {
+        return "Chapitre{" +
+                "chCode=" + chCode +
+                ", chNom='" + chNom + '\'' +
+                '}';
     }
 }

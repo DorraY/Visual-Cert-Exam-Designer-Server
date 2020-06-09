@@ -1,6 +1,7 @@
 package com.Model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -8,11 +9,21 @@ import java.util.Set;
 public class Examen {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @TableGenerator(name="sqlite", table="sqlite_sequence",
+            pkColumnName="name", valueColumnName="seq",
+            pkColumnValue="sqliteTestTable")
+    @Column(name = "ex_id")
     private Integer exId;
 
+    @Column(name = "ex_nom")
+    @NotNull
     private String exNom;
+
+    @NotNull
     private int exTime;
+
+    @NotNull
     private int exScore;
 
     public Examen() {
@@ -31,6 +42,7 @@ public class Examen {
 
 /*    @OneToMany(mappedBy = "quCode")
     private Set<Question> questions;*/
+
 
     public Integer getExId() {
         return exId;

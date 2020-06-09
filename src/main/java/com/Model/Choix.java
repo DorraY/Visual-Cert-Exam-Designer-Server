@@ -1,12 +1,16 @@
 package com.Model;
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "Choix")
 public class Choix {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @TableGenerator(name="sqlite", table="sqlite_sequence",
+            pkColumnName="name", valueColumnName="seq",
+            pkColumnValue="sqliteTestTable")
     @Column(name = "ch_code")
     private Integer choixCode;
 
@@ -18,7 +22,6 @@ public class Choix {
 
     @Column(name = "ch_ordre")
     private Integer choixOrdre;
-
 
     @ManyToOne
     @JoinColumn(name = "ch_qucode")
@@ -54,5 +57,13 @@ public class Choix {
 
     public void setChoixOrdre(Integer choixOrdre) {
         this.choixOrdre = choixOrdre;
+    }
+
+    public Question getChQuCode() {
+        return chQuCode;
+    }
+
+    public void setChQuCode(Question chQuCode) {
+        this.chQuCode = chQuCode;
     }
 }

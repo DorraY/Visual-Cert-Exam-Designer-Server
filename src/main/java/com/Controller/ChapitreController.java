@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin(origins = "http://localhost:9090")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1")
 public class ChapitreController {
@@ -32,9 +32,14 @@ public class ChapitreController {
         return ResponseEntity.ok().body(chapitre);
     }
 
-    @PostMapping("/chapters/")
+    @PostMapping("/chapters")
     public Chapitre createChapter(@Valid @RequestBody Chapitre chapitre) {
-        return chapitreRepository.save(chapitre);
+        if (!chapitreRepository.existsByChNom(chapitre.getChNom())) {
+            return chapitreRepository.save(chapitre);
+        }
+        return  null;
+
+
     }
 
     @PutMapping("/chapters/{id}")
