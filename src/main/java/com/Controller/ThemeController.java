@@ -1,6 +1,7 @@
 package com.Controller;
 
 import com.Exception.ResourceNotFoundException;
+import com.Model.Examen;
 import com.Model.Theme;
 import com.Repositories.ThemeRepository;
 import org.hibernate.annotations.GenerationTime;
@@ -20,6 +21,9 @@ public class ThemeController {
 
     @Autowired
     private ThemeRepository themeRepository;
+
+    @Autowired
+    private ExamenController examenController;
 
     @GetMapping("/themes")
     public List<Theme> getAllThemes() {
@@ -57,6 +61,12 @@ public class ThemeController {
                                                            Integer thCode) throws ResourceNotFoundException {
         Theme theme = themeRepository.findById(thCode).orElseThrow(
                 () -> new ResourceNotFoundException("No theme for this id" + thCode));
+        List <Examen> allExams = examenController.getAllExams();
+        for (Examen examen: allExams) {
+            if (examen.getExThCode().getThCode().equals(thCode)) {
+                examenController.deleteExam(examen.getExId());
+            }
+        }
         themeRepository.delete(theme);
         Map<String,Boolean> response = new HashMap<>();
         response.put("deleted", Boolean.TRUE);

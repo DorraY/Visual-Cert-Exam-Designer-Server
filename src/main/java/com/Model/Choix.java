@@ -14,16 +14,20 @@ public class Choix {
     @Column(name = "ch_code")
     private Integer choixCode;
 
+    @NotNull
     @Column(name = "ch_texte")
     private String chText;
 
+    @NotNull
     @Column(name = "ch_correct")
     private Integer chCorrect;
 
+    @NotNull
     @Column(name = "ch_ordre")
     private Integer choixOrdre;
 
     @ManyToOne
+    @NotNull
     @JoinColumn(name = "ch_qucode")
     private Question chQuCode;
 

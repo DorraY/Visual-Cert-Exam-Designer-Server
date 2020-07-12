@@ -15,9 +15,9 @@ public class Chapitre {
             pkColumnValue="sqliteTestTable")
     private Integer chCode;
 
+
     private String chNom;
 
-    @NotNull
     public Chapitre() {
     }
 

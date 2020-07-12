@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,7 +62,7 @@ public class ExamenController {
     public Map<String, Boolean> deleteExam(@PathVariable(value = "id") Integer exId) throws ResourceNotFoundException {
         Examen examen = examenRepository.findById(exId).orElseThrow(
                 () -> new ResourceNotFoundException("No exam for this id" + exId));
-        List <Question> allQuestions = questionController.getAllQuestions();
+        List<Question> allQuestions = questionController.getAllQuestions();
         for (Question question: allQuestions) {
             if (question.getExCode().getExId().equals(exId)) {
                 questionController.deleteQuestion(question.getQuCode());
